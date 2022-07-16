@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { gql, useQuery, useMutation } from "urql";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const defaultEvent = {
     name: "Untitled Event",
@@ -16,16 +16,28 @@ export const Events = () => {
     const [createEventResults, createEvent] = useMutation(createEventMutation);
 
     const [cacheEvents, setCacheEvents] = useState<Record<string, string>[]>(
-        events.data?.getEvents || []
+        []
     );
+
+    useEffect(() => {
+        if (events.fetching) {
+            return;
+        }
+
+        setCacheEvents(events.data?.getEvents);
+    }, [events.fetching]);
 
     return (
         <>
             <Button
                 $mt
                 onClick={async () => {
-                    await createEvent(defaultEvent);
-                    setCacheEvents([...cacheEvents, defaultEvent]);
+                    const { data } = await createEvent(defaultEvent);
+
+                    setCacheEvents((events) => [
+                        ...events,
+                        { id: data.createEvent.id, ...defaultEvent },
+                    ]);
                 }}
             >
                 Create Event
@@ -33,7 +45,7 @@ export const Events = () => {
 
             <Div $mtLarge>
                 {!events.fetching &&
-                    events.data.getEvents.map(
+                    cacheEvents.map(
                         (event: Record<string, string>, i: number) => (
                             <Link
                                 className="reset"
@@ -41,8 +53,13 @@ export const Events = () => {
                                 key={i}
                             >
                                 <Event>
-                                    <H as="h3">{event.name}</H>
-                                    <P $mt>{event.description}</P>
+                                    <H as="h3">
+                                        {event.name || defaultEvent.name}
+                                    </H>
+                                    <P $mt>
+                                        {event.description ||
+                                            defaultEvent.description}
+                                    </P>
                                 </Event>
                             </Link>
                         )

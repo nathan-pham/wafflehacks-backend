@@ -11,7 +11,14 @@ def createAttendee(obj, info, **kwargs):
 
 def updateAttendee(obj, info, **kwargs):
     attendee = Attendee.query.get(kwargs.get("id"))
-    attendee.update(**kwargs)
+    attendee.name = kwargs.get("name", attendee.name)
+    attendee.email = kwargs.get("email", attendee.email)
+    db.session.commit()
+    return attendee
+
+def deleteAttendee(obj, info, **kwargs):
+    attendee = Attendee.query.get(kwargs.get("id"))
+    db.session.delete(attendee)
     db.session.commit()
     return attendee
 
@@ -58,6 +65,7 @@ def deleteEventAttendee(obj, info, **kwargs):
 resolvers = {
     "createAttendee": createAttendee,
     "updateAttendee": updateAttendee,
+    "deleteAttendee": deleteAttendee,
 
     "createEvent": createEvent,
     "updateEvent": updateEvent,

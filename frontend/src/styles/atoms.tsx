@@ -4,6 +4,7 @@ interface marginProps {
     $mt?: boolean;
     $mtLarge?: boolean;
     $mtVeryLarge?: boolean;
+    $mr?: boolean;
 }
 
 const margin = css`
@@ -12,6 +13,7 @@ const margin = css`
     ${({ $mt }: marginProps) => $mt && `margin-top: 0.75rem;`}
     ${({ $mtLarge }: marginProps) => $mtLarge && `margin-top: 1.5rem;`}
     ${({ $mtVeryLarge }: marginProps) => $mtVeryLarge && `margin-top: 3rem;`}
+    ${({ $mr }: marginProps) => $mr && `margin-right: 0.75rem;`}
 `;
 
 const padding = css`
@@ -32,6 +34,7 @@ export const H = styled.h1`
 
 interface ButtonProps extends marginProps {
     $warning?: boolean;
+    $inline?: boolean;
 }
 
 export const Button = styled.button`
@@ -54,7 +57,7 @@ export const Button = styled.button`
     
     user-select: none;
     cursor: pointer;
-    display: block;
+    display: ${({ $inline }: ButtonProps) => ($inline ? "inline" : "block")};
     transition: border-color 100ms ease-in-out;
 `;
 
