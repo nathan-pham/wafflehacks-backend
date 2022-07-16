@@ -1,0 +1,48 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+scalar Date
+
+type Attendee {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+type EventAttendance {
+    id: ID!
+    attendee: Attendee!
+    here: Boolean!
+}
+
+type Event {
+    id: ID!
+    name: String!
+    description: String!
+
+    attendance: [EventAttendance]
+}
+
+type Query {
+    getAttendees: [Attendee]
+    getAttendee(id: ID!): Attendee
+
+    getEvents: [Event]
+    getEvent(id: ID!): Event
+}
+
+type Mutation {
+    createAttendee(name: String!, email: String!): Attendee
+    updateAttendee(id: ID!, name: String!, email: String!): Attendee
+    deleteAttendee(id: ID!): Attendee
+
+    createEvent(name: String!, description: String!): Event
+    updateEvent(id: ID!, name: String, description: String): Event
+    deleteEvent(id: ID!): Event
+
+    createEventAttendee(eventId: ID!, attendeeId: ID!): Event
+    updateEventAttendee(eventId: ID!, attendeeId: ID!, here: Boolean!): Event
+    deleteEventAttendee(eventId: ID!, attendeeId: ID!): Event
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧇</text></svg>"
+        />
+        <title>Waffle Hacks Challenge</title>
+
+        <link rel="stylesheet" href="/css/globals.css" />
+        <link rel="stylesheet" href="/css/index.css" />
+
+        <script src="/js/app.js" type="module"></script>
+    </head>
+    <body>
+        <div id="app">
+            <main>
+                <h1 id="app__title">🧇 Waffle Hacks Challenge</h1>
+                <h2>Create Event</h2>
+
+                <form method="POST">
+                    <input type="text" placeholder="Event Name" name="name" />
+                    <textarea
+                        type="text"
+                        placeholder="Event Description"
+                        name="description"
+                    ></textarea>
+
+                    <button>Create Event</button>
+                </form>
+
+                <h2>Events</h2>
+
+                <div id="events"></div>
+            </main>
+
+            <footer>Waffle Hacks Challenge</footer>
+        </div>
+
+        <div class="modal">
+            <div class="modal__card">
+                <h1>Update Waffle Hacks</h1>
+                <form></form>
+
+                <h2>Create Attendee</h2>
+
+                <form method="POST">
+                    <input type="text" placeholder="Name" name="name" />
+                    <textarea
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                    ></textarea>
+
+                    <button>Create Attendee</button>
+                </form>
+
+                <h2>Attendees</h2>
+                <table>
+                    <tr>
+                        <td>Nathan</td>
+                        <td>nathanpham.me@gmail.com</td>
+                        <td>
+                            <button>Delete</button>
+                            <button>Mark as Here</button>
+                            <button>Mark as not Here</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

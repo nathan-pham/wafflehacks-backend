@@ -1,0 +1,17 @@
+{
+    "python.autoComplete.extraPaths": [
+        "C:/Users/gasma/.virtualenvs/wafflehacks-challenge-zomCcL2I/Lib/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "C:/Users/gasma/.virtualenvs/wafflehacks-challenge-zomCcL2I/Lib/site-packages"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true
+    }
+}

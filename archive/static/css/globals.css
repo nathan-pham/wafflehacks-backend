@@ -1,0 +1,66 @@
+:root {
+    --waffle-bg: #c7883e;
+    --waffle-fg: #eac07a;
+    --waffle-butter: #f4d539;
+    --border: #bfbfbf;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+button {
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: var(--waffle-bg);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+}
+
+input[type="text"],
+textarea {
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+    min-width: 20rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border: 1px solid var(--waffle-bg);
+}
+
+form input,
+form textarea {
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}

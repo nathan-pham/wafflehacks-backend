@@ -1,0 +1,27 @@
+#app {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+#app__title {
+    margin-top: 3rem;
+}
+
+.event {
+    padding: 1rem;
+    border: 1px solid var(--waffle-bg);
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    user-select: none;
+    text-decoration: none;
+}
+
+.event h3 {
+    margin: 0;
+    color: var(--waffle-fg);
+}
+
+.event p {
+    margin: 0.5rem 0 0 0;
+}
